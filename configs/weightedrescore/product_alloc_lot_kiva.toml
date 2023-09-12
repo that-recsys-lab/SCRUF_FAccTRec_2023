@@ -3,11 +3,11 @@ path = "../../data"
 overwrite = "true"
 
 [data]
-rec_filename = "recs_test.csv"
-feature_filename = "items_test.csv"
+rec_filename = "kiva_recs.csv"
+feature_filename = "kiva_item.csv"
 
 [output]
-filename = "history_file_least_fair_borda_test.json"
+filename = "history_file_product_lottery_rescore_kiva.json"
 
 [parameters]
 list_size = 10
@@ -19,65 +19,64 @@ history_window_size = 100
 context_class = "csv_context"
 
 [context.properties]
-compatibility_file = "compat_test.csv"
+compatibility_file = "kiva_compat_dynamic.csv"
+
 
 [feature]
 
 [feature.one]
-name = "0"
-protected_feature = "0"
+name = "COUNTRY_low_pfr"
+protected_feature = "COUNTRY_low_pfr"
 protected_values = [1]
 
 [feature.two]
-name = "1"
-protected_feature = "1"
+name = "loan_buck_5"
+protected_feature = "loan_buck_5"
 protected_values = [1]
 
 [agent]
 
 [agent.one]
-name = "0"
+name = "COUNTRY_low_pfr"
 metric_class = "proportional_item"
 compatibility_class = "context_compatibility"
-preference_function_class = "cascade_preference"
+preference_function_class = "binary_preference"
 
 [agent.one.metric]
-feature = "0"
+feature = "COUNTRY_low_pfr"
 proportion = 0.2
 
 [agent.one.preference]
-delta = 0.1
-feature = "0"
+delta = 0.3
+feature = "COUNTRY_low_pfr"
 
 [agent.two]
-name = "1"
+name = "loan_buck_5"
 metric_class = "proportional_item"
 compatibility_class = "context_compatibility"
-preference_function_class = "cascade_preference"
+preference_function_class = "binary_preference"
 
 [agent.two.metric]
-feature = "1"
-proportion = 0.2
+feature = "loan_buck_5"
+proportion = 0.3
 
 [agent.two.preference]
-delta = 0.1
-feature = "1"
+delta = 0.6
+feature = "loan_buck_5"
 
 [allocation]
-allocation_class = "least_fair"
+allocation_class = "product_lottery"
 
 [choice]
-choice_class = "whalrus_scoring"
+choice_class = "weighted_scoring"
 [choice.properties]
-whalrus_rule = "RuleBorda"
-tie_breaker = "Random"
-ignore_weights = false
-recommender_weight = 0.5
+
+recommender_weight = 0.8
 
 [post]
 postprocess_class = "exposure"
 
 [post.properties]
-filename = "Borda_least_outputtest.csv"
+filename = "Rescore_prod_output_kiva.csv"
 threshold = "none"
 binary = "false"

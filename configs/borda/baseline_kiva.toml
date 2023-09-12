@@ -60,7 +60,7 @@ feature = "loan_buck_5"
 proportion = 0.3
 
 [agent.two.preference]
-delta = 0.5
+delta = 0.6
 feature = "loan_buck_5"
 
 

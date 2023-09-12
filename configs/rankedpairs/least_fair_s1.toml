@@ -43,7 +43,7 @@ preference_function_class = "binary_preference"
 
 [agent.one.metric]
 feature = "0"
-proportion = 0.2
+proportion = 0.25
 
 [agent.one.preference]
 delta = 0.1
@@ -57,7 +57,7 @@ preference_function_class = "binary_preference"
 
 [agent.two.metric]
 feature = "1"
-proportion = 0.2
+proportion = 0.25
 
 [agent.two.preference]
 delta = 0.1
